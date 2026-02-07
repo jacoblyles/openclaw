@@ -78,7 +78,7 @@ The Rescue Agent runs as a completely separate process from the main gateway:
 
 ### AI Model Selection
 
-**Recommended model: `anthropic/claude-3-5-haiku`**
+**Recommended model: `anthropic/claude-opus-4-6`**
 
 **Rationale:**
 
@@ -90,9 +90,9 @@ The Rescue Agent runs as a completely separate process from the main gateway:
 
 **Fallback cascade:**
 
-1. Primary: `anthropic/claude-3-5-haiku`
-2. Fallback 1: `openai/gpt-4o-mini` (if Anthropic is down)
-3. Fallback 2: `google/gemini-2.0-flash-lite` (if both above fail)
+1. Primary: `anthropic/claude-opus-4-6`
+2. Fallback 1: `openai/claude-sonnet-4-5` (if Anthropic is down)
+3. Fallback 2: `google/claude-opus-4-5` (if both above fail)
 4. Emergency: Deterministic rules (no AI) for critical operations
 
 ### Configuration
@@ -105,10 +105,10 @@ The Rescue Agent runs as a completely separate process from the main gateway:
   "enabled": true,
   "
   "ai": {
-    "primaryModel": "anthropic/claude-3-5-haiku",
+    "primaryModel": "anthropic/claude-opus-4-6",
     "fallbackModels": [
-      "openai/gpt-4o-mini",
-      "google/gemini-2.0-flash-lite"
+      "openai/claude-sonnet-4-5",
+      "google/claude-opus-4-5"
     ],
     "maxTokensPerRequest": 4096,
     "temperature": 0.1

@@ -51,7 +51,6 @@ import { runOnboardingWizard } from "../wizard/onboarding.js";
 import { createAuthRateLimiter, type AuthRateLimiter } from "./auth-rate-limit.js";
 import { startChannelHealthMonitor } from "./channel-health-monitor.js";
 import { startGatewayConfigReloader } from "./config-reload.js";
-import type { ControlUiRootState } from "./control-ui.js";
 import {
   GATEWAY_EVENT_UPDATE_AVAILABLE,
   type GatewayUpdateAvailableEventPayload,

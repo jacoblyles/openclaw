@@ -39,4 +39,12 @@ describe("plugin runtime command execution", () => {
     ).rejects.toThrow("boom");
     expect(runCommandWithTimeoutMock).toHaveBeenCalledWith(["echo", "hello"], { timeoutMs: 1000 });
   });
+
+  it("exposes agent-scoped session resolver hooks", () => {
+    const runtime = createPluginRuntime();
+    expect(runtime.channel.session.resolveSessionIdFromSessionKey).toBeTypeOf("function");
+    expect(runtime.channel.session.resolveAgentIdFromSessionKey).toBeTypeOf("function");
+    expect(runtime.channel.session.listAgentSessionIds).toBeTypeOf("function");
+    expect(runtime.channel.session.resolveSessionMeta).toBeTypeOf("function");
+  });
 });

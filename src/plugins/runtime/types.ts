@@ -68,6 +68,7 @@ type RecordSessionMetaFromInbound =
 type ResolveStorePath = typeof import("../../config/sessions.js").resolveStorePath;
 type ReadSessionUpdatedAt = typeof import("../../config/sessions.js").readSessionUpdatedAt;
 type UpdateLastRoute = typeof import("../../config/sessions.js").updateLastRoute;
+type AgentScopeSessionMeta = import("../../config/sessions.js").AgentScopeSessionMeta;
 type LoadConfig = typeof import("../../config/config.js").loadConfig;
 type WriteConfigFile = typeof import("../../config/config.js").writeConfigFile;
 type RecordChannelActivity = typeof import("../../infra/channel-activity.js").recordChannelActivity;
@@ -305,6 +306,10 @@ export type PluginRuntime = {
       recordSessionMetaFromInbound: RecordSessionMetaFromInbound;
       recordInboundSession: RecordInboundSession;
       updateLastRoute: UpdateLastRoute;
+      resolveSessionIdFromSessionKey: (sessionKey: string) => Promise<string | undefined>;
+      resolveAgentIdFromSessionKey: (sessionKey: string) => Promise<string | undefined>;
+      listAgentSessionIds: (agentId: string) => Promise<string[]>;
+      resolveSessionMeta: (sessionId: string) => Promise<AgentScopeSessionMeta | undefined>;
     };
     mentions: {
       buildMentionRegexes: BuildMentionRegexes;
